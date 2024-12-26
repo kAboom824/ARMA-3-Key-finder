@@ -22,10 +22,10 @@ def nameFinder():
         print('O O P S')
     #This just prunes away the warning file for ease of use
 
-    print('\n\033[32mKey names:\033[0m')
+    print('\n\033[32mMod names:\033[0m')
     for i in list1:
         print(i)
-    print('\033[32mKey names end:\033[0m\n')
+    print('\033[32mMod names end:\033[0m\n')
 
 def keyFinder():
     authorize = input('\n\033[33mCAUTIONARY:\033[0m This will generate a file on THIS machines desktop named folder_of_keys. Then, it will copy all of the keys in the given file path to that folder.\nAuthorize (Y/N?)')
@@ -112,3 +112,5 @@ if isARMA == False:
 #This is a failsafe to make sure the user gave the program the ARMA folder, since CBA is almost always used in any modded server
 
 userInput(userOption)
+
+#This version of the code is designed to be run in a PC with python installed through and IDE or the command prompt.
