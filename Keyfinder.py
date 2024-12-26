@@ -32,6 +32,7 @@ def keyFinder():
     if authorize.lower() != 'y':
         print('aborting file creation')
         exit()
+    #This here makes sure that the user is okay with the generation of a file on their PC
 
     newpath = os.path.join(os.path.expanduser("~"), r"desktop\folder_of_keys")
     # Slight modification from the python terminal version to allow the code to actually put the file on the desktop.
@@ -39,12 +40,31 @@ def keyFinder():
         os.makedirs(newpath)
     #Generates a folder on the desktop which will house the keys
 
-    modlist = os.listdir(path)
+    #Warning! Variable mush below. It's okay though, it does a good job
+    selectiveInitiator = input('Do you wish to use selective search?(Y/N): ')
+    if selectiveInitiator.lower() == 'y':
+        selectiveList = ''
+        print("[Multi line input, press ENTER twice to exit] Please paste the desired mods below (FORMAT NEEDED: Mod inclosed in ' '): ")
+        while True:
+            selectiveFeeder = input()
+            if selectiveFeeder == '':
+                break
+            else:
+                selectiveList +=selectiveFeeder
+        #This whole while loop is just to allow for multi line input.
+        modlist = []
+        for specificMod in selectiveList.split("'"):
+            if '@' in specificMod:
+                modlist.append(os.path.join(path, specificMod.strip(' ')))
+
+    else:
+        modlist = os.listdir(path)
+    # this brick allows keys to be printed selectively, through the input of their name. Designed to work with the format that server team uses.
+        
     nokeylist = []
     approvedKeyfolders = ['keys', 'key', 'KEYS', 'KEY', 'PublicKey_GOS_Makhno']
 
     for modname in modlist:
-
         pathExists = False
 
         for keyname in approvedKeyfolders:
