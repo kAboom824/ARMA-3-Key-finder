@@ -28,12 +28,13 @@ def nameFinder():
     print('\033[32mMod names end:\033[0m\n')
 
 def keyFinder():
-    authorize = input('\n\033[33mCAUTIONARY:\033[0m This will generate a file on THIS machines desktop named folder_of_keys. Then, it will copy all of the keys in the given file path to that folder.\nAuthorize (Y/N?)')
+    authorize = input('\n\033[33mCAUTIONARY:\033[0m This will generate a file on THIS machines desktop named folder_of_keys. Then, it will copy all of the keys in the given file path to that folder.\nAuthorize (Y/N?): ')
     if authorize.lower() != 'y':
         print('aborting file creation')
         exit()
 
-    newpath = r"desktop\folder_of_keys"
+    newpath = os.path.join(os.path.expanduser("~"), r"desktop\folder_of_keys")
+    # Slight modification from the python terminal version to allow the code to actually put the file on the desktop.
     if not os.path.exists(newpath):
         os.makedirs(newpath)
     #Generates a folder on the desktop which will house the keys
@@ -113,4 +114,7 @@ if isARMA == False:
 
 userInput(userOption)
 
-#This version of the code is designed to be run in a PC with python installed through and IDE or the command prompt.
+input('Operation complete, press ENTER to close.')
+
+#This version of the code is designed to be run as an executable file
+#Written by kAboom824
